@@ -5,6 +5,11 @@
 
 int main()
 {
-    // something ...
+	char input[1024];
+	while(fgets(input, 1023, stdin) != NULL)
+	{
+        process(input);
+		printf("Output : %s", input);
+	}
     return 0;
 }

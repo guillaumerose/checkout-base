@@ -3,6 +3,7 @@
 all: checkout.o console.o checkout_test console
 
 checkout_test: checkout.o
+console: console.o checkout.o
 
 test: checkout_test
 	./checkout_test

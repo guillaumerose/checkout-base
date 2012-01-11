@@ -1,7 +1,4 @@
-#ifndef _CHECKOUT_INCLUDED
-#define _CHECKOUT_INCLUDED
+#include "stdio.h"
+#include "stdlib.h"
 
-int add_numbers(int a, int b);
-int multiply_numbers(int a, int b);
-
-#endif
+void process(char *chaine);

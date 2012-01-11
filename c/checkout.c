@@ -1,11 +1,8 @@
 #include "checkout.h"
 
-int add_numbers(int a, int b)
-{
-  return a + b;
-}
-
-int multiply_numbers(int a, int b)
-{
-  return a * b;
+void process(char *chaine) {
+	while(*chaine != '\0') {
+		*chaine = toupper(*chaine);
+		chaine++;
+	}
 }
