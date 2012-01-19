@@ -3,9 +3,9 @@
 
 void test_index()
 {
-    ASSERT_EQUALS(POMMES, indexPour("Pommes\n"));
-    ASSERT_EQUALS(BANANES, indexPour("Bananes\n"));
-    ASSERT_EQUALS(CERISES, indexPour("Cerises\n"));
+    ASSERT_EQUALS(POMMES, indexPour("Pommes"));
+    ASSERT_EQUALS(BANANES, indexPour("Bananes"));
+    ASSERT_EQUALS(CERISES, indexPour("Cerises"));
 }
 
 void test_prix()
@@ -24,7 +24,7 @@ void test_reduction_une_cerise()
 void test_reduction_deux_cerises()
 {
     int etat[] = { 0, 0, 1 };
-    ASSERT_EQUALS(-20, reductionPour(etat, CERISES));
+    ASSERT_EQUALS(-30, reductionPour(etat, CERISES));
 }
 
 void test_reduction_deux_cerises_une_pomme()
@@ -39,6 +39,12 @@ void test_reduction_trois_cerises()
     ASSERT_EQUALS(0, reductionPour(etat, CERISES));
 }
 
+void test_reduction_bananes()
+{
+    int etat[] = { 0, 1, 0 };
+    ASSERT_EQUALS(-150, reductionPour(etat, BANANES));
+}
+
 int main()
 {
   RUN(test_index);
@@ -47,5 +53,6 @@ int main()
   RUN(test_reduction_deux_cerises);
   RUN(test_reduction_deux_cerises_une_pomme);
   RUN(test_reduction_trois_cerises);
+  RUN(test_reduction_bananes);
   return TEST_REPORT();
 }
