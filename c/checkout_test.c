@@ -1,12 +1,11 @@
 #include "tinytest.h"
-
 #include "checkout.h"
 
 void test_index()
 {
     ASSERT_EQUALS(POMMES, indexPour("Pommes"));
-    ASSERT_EQUALS(POMMES, indexPour("Apples"));
-    ASSERT_EQUALS(POMMES, indexPour("Mele"));
+    ASSERT_EQUALS(APPLES, indexPour("Apples"));
+    ASSERT_EQUALS(MELE, indexPour("Mele"));
     ASSERT_EQUALS(BANANES, indexPour("Bananes"));
     ASSERT_EQUALS(CERISES, indexPour("Cerises"));
 }
@@ -14,6 +13,8 @@ void test_index()
 void test_prix()
 {
     ASSERT_EQUALS(100, prixPour(POMMES));
+    ASSERT_EQUALS(100, prixPour(MELE));
+    ASSERT_EQUALS(100, prixPour(APPLES));
     ASSERT_EQUALS(150, prixPour(BANANES));
     ASSERT_EQUALS(75, prixPour(CERISES));
 }
@@ -48,6 +49,18 @@ void test_reduction_bananes()
     ASSERT_EQUALS(-150, reductionPour(etat, BANANES));
 }
 
+void test_reduction_apples()
+{
+    int etat[] = { 0, 0, 0, 2, 0 };
+    ASSERT_EQUALS(-100, reductionPour(etat, APPLES));
+}
+
+void test_reduction_mele()
+{
+    int etat[] = { 0, 0, 0, 0, 1 };
+    ASSERT_EQUALS(-100, reductionPour(etat, MELE));
+}
+
 int main()
 {
   RUN(test_index);
@@ -57,5 +70,7 @@ int main()
   RUN(test_reduction_deux_cerises_une_pomme);
   RUN(test_reduction_trois_cerises);
   RUN(test_reduction_bananes);
+  RUN(test_reduction_apples);
+  RUN(test_reduction_mele);
   return TEST_REPORT();
 }
