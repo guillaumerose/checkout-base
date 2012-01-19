@@ -16,6 +16,10 @@ void process(char *chaine) {
 int indexPour(char *chaine) {
 	if (strcmp(chaine, "Pommes") == 0)
         return POMMES;
+    else if(strcmp(chaine, "Apples") == 0)
+        return POMMES;
+    else if(strcmp(chaine, "Mele") == 0)
+        return POMMES;
     else if(strcmp(chaine, "Bananes") == 0)
         return BANANES;
     else if(strcmp(chaine, "Cerises") == 0)
@@ -40,7 +44,7 @@ int reductionPour(int etat[], int index) {
     if (index == CERISES
         && etat[CERISES] > 0
         && etat[CERISES] % 2 == 0) {
-        return -30;
+        return -20;
     }
     if (index == BANANES
         && etat[BANANES] > 0

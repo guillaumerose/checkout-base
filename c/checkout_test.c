@@ -1,9 +1,12 @@
 #include "tinytest.h"
+
 #include "checkout.h"
 
 void test_index()
 {
     ASSERT_EQUALS(POMMES, indexPour("Pommes"));
+    ASSERT_EQUALS(POMMES, indexPour("Apples"));
+    ASSERT_EQUALS(POMMES, indexPour("Mele"));
     ASSERT_EQUALS(BANANES, indexPour("Bananes"));
     ASSERT_EQUALS(CERISES, indexPour("Cerises"));
 }
@@ -24,7 +27,7 @@ void test_reduction_une_cerise()
 void test_reduction_deux_cerises()
 {
     int etat[] = { 0, 0, 1 };
-    ASSERT_EQUALS(-30, reductionPour(etat, CERISES));
+    ASSERT_EQUALS(-20, reductionPour(etat, CERISES));
 }
 
 void test_reduction_deux_cerises_une_pomme()
