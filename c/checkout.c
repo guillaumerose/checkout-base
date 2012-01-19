@@ -1,9 +1,5 @@
 #include "checkout.h"
 
-#define POMMES 0
-#define BANANES 1
-#define CERISES 2
-
 int total = 0;
 int etat[] = {0, 0, 0};
 
@@ -42,7 +38,7 @@ int prixPour(int i) {
 
 int reductionPour(int etat[]) {
     if (etat[CERISES] > 0 && etat[CERISES] % 2 == 0) {
-        return -30;
+        return -20;
     }
     return 0;
 }
