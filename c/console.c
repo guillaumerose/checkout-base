@@ -9,7 +9,6 @@ int main()
 	while(fgets(input, 1023, stdin) != NULL)
 	{
         process(input);
-		printf("Output : %s", input);
 	}
     return 0;
 }
