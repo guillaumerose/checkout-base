@@ -9,8 +9,7 @@ void process(char *chaine) {
         return;
     }
 
-    etat[index]++;
-    total = total + prixPour(index) + reductionPour(etat);
+    total = total + prixPour(index) + reductionPour(etat, index);
     printf("> %i\n", total);
 }
 
@@ -36,8 +35,11 @@ int prixPour(int i) {
     return 0;
 }
 
-int reductionPour(int etat[]) {
-    if (etat[CERISES] > 0 && etat[CERISES] % 2 == 0) {
+int reductionPour(int etat[], int index) {
+    etat[index]++;
+    if (index == CERISES
+        && etat[CERISES] > 0
+        && etat[CERISES] % 2 == 0) {
         return -20;
     }
     return 0;
