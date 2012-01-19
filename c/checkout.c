@@ -9,7 +9,7 @@ void process(char *chaine) {
         return;
     }
 
-    total = total + prixPour(index) + reductionPour(etat, index);
+    total = total + prixPour(index) + reductionPour(etat, index) + reductionGlobalePour(etat, index);
     printf("> %i\n", total);
 }
 
@@ -32,7 +32,7 @@ int prixPour(int i) {
 	if (i == POMMES || i == APPLES || i == MELE)
         return 100;
     else if(i == BANANES)
-        return 150;
+        return 200;
     else if(i == CERISES)
         return 75;
 
@@ -49,7 +49,7 @@ int reductionPour(int etat[], int index) {
     if (index == BANANES
         && etat[BANANES] > 0
         && etat[BANANES] % 2 == 0) {
-        return -150;
+        return -200;
     }
     if (index == APPLES
         && etat[APPLES] > 0
@@ -59,7 +59,30 @@ int reductionPour(int etat[], int index) {
     if (index == MELE
         && etat[MELE] > 0
         && etat[MELE] % 2 == 0) {
-        return -100;
+        return -50;
     }
     return 0;
+}
+
+int reductionGlobalePour(int etat[], int index) {
+    int pommes = etat[POMMES] + etat[APPLES] + etat[MELE];
+    int fruits = nombreFruits(etat);
+
+    if ((index == POMMES || index == APPLES || index == MELE) && pommes > 0 && pommes % 4 == 0) {
+        return -100;
+    }
+    if (fruits > 0 && fruits % 5 == 0) {
+        return -200;
+    }
+    return 0;
+}
+
+int nombreFruits(int etat[]) {
+    int resultat = 0;
+    int j;
+    for(j = 0; j < 5; ++j)
+    {
+        resultat += etat[j];
+    }
+    return resultat;
 }

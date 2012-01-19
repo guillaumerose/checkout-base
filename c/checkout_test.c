@@ -15,7 +15,7 @@ void test_prix()
     ASSERT_EQUALS(100, prixPour(POMMES));
     ASSERT_EQUALS(100, prixPour(MELE));
     ASSERT_EQUALS(100, prixPour(APPLES));
-    ASSERT_EQUALS(150, prixPour(BANANES));
+    ASSERT_EQUALS(200, prixPour(BANANES));
     ASSERT_EQUALS(75, prixPour(CERISES));
 }
 
@@ -46,7 +46,7 @@ void test_reduction_trois_cerises()
 void test_reduction_bananes()
 {
     int etat[] = { 0, 1, 0 };
-    ASSERT_EQUALS(-150, reductionPour(etat, BANANES));
+    ASSERT_EQUALS(-200, reductionPour(etat, BANANES));
 }
 
 void test_reduction_apples()
@@ -58,7 +58,23 @@ void test_reduction_apples()
 void test_reduction_mele()
 {
     int etat[] = { 0, 0, 0, 0, 1 };
-    ASSERT_EQUALS(-100, reductionPour(etat, MELE));
+    ASSERT_EQUALS(-50, reductionPour(etat, MELE));
+}
+
+void test_reduction_globale_pommes()
+{
+    int etat[] = { 4, 0, 0, 0, 0 };
+    ASSERT_EQUALS(-100, reductionGlobalePour(etat, POMMES));
+    ASSERT_EQUALS(-100, reductionGlobalePour(etat, APPLES));
+    ASSERT_EQUALS(-100, reductionGlobalePour(etat, MELE));
+    ASSERT_EQUALS(0, reductionGlobalePour(etat, BANANES));
+}
+
+void test_reduction_globale()
+{
+    int etat[] = { 1, 1, 1, 1, 1 };
+    ASSERT_EQUALS(-200, reductionGlobalePour(etat, POMMES));
+    ASSERT_EQUALS(-200, reductionGlobalePour(etat, BANANES));
 }
 
 int main()
@@ -72,5 +88,7 @@ int main()
   RUN(test_reduction_bananes);
   RUN(test_reduction_apples);
   RUN(test_reduction_mele);
+  RUN(test_reduction_globale_pommes);
+  RUN(test_reduction_globale);
   return TEST_REPORT();
 }
