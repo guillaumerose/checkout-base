@@ -21,43 +21,43 @@ void test_prix()
 
 void test_reduction_une_cerise()
 {
-    int etat[] = { 0, 0, 0 };
+    int etat[] = { 0, 0, 1 };
     ASSERT_EQUALS(0, reductionPour(etat, CERISES));
 }
 
 void test_reduction_deux_cerises()
 {
-    int etat[] = { 0, 0, 1 };
+    int etat[] = { 0, 0, 2 };
     ASSERT_EQUALS(-20, reductionPour(etat, CERISES));
 }
 
 void test_reduction_deux_cerises_une_pomme()
 {
-    int etat[] = { 0, 0, 2 };
+    int etat[] = { 1, 0, 2 };
     ASSERT_EQUALS(0, reductionPour(etat, POMMES));
 }
 
 void test_reduction_trois_cerises()
 {
-    int etat[] = { 0, 0, 2 };
+    int etat[] = { 0, 0, 3 };
     ASSERT_EQUALS(0, reductionPour(etat, CERISES));
 }
 
 void test_reduction_bananes()
 {
-    int etat[] = { 0, 1, 0 };
+    int etat[] = { 0, 2, 0 };
     ASSERT_EQUALS(-200, reductionPour(etat, BANANES));
 }
 
 void test_reduction_apples()
 {
-    int etat[] = { 0, 0, 0, 2, 0 };
+    int etat[] = { 0, 0, 0, 3, 0 };
     ASSERT_EQUALS(-100, reductionPour(etat, APPLES));
 }
 
 void test_reduction_mele()
 {
-    int etat[] = { 0, 0, 0, 0, 1 };
+    int etat[] = { 0, 0, 0, 0, 2 };
     ASSERT_EQUALS(-50, reductionPour(etat, MELE));
 }
 

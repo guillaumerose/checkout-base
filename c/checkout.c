@@ -9,6 +9,7 @@ void process(char *chaine) {
         return;
     }
 
+    etat[index]++;
     total = total + prixPour(index) + reductionPour(etat, index) + reductionGlobalePour(etat, index);
     printf("> %i\n", total);
 }
@@ -39,28 +40,17 @@ int prixPour(int i) {
     return 0;
 }
 
+#define REDUCTION(article, frequence, montant) if (index == article \
+    && etat[article] > 0 \
+    && etat[article] % frequence == 0) { \
+    return -montant; \
+}
+
 int reductionPour(int etat[], int index) {
-    etat[index]++;
-    if (index == CERISES
-        && etat[CERISES] > 0
-        && etat[CERISES] % 2 == 0) {
-        return -20;
-    }
-    if (index == BANANES
-        && etat[BANANES] > 0
-        && etat[BANANES] % 2 == 0) {
-        return -200;
-    }
-    if (index == APPLES
-        && etat[APPLES] > 0
-        && etat[APPLES] % 3 == 0) {
-        return -100;
-    }
-    if (index == MELE
-        && etat[MELE] > 0
-        && etat[MELE] % 2 == 0) {
-        return -50;
-    }
+    REDUCTION(CERISES, 2, 20);
+    REDUCTION(BANANES, 2, 200);
+    REDUCTION(APPLES, 3, 100);
+    REDUCTION(MELE, 2, 50);
     return 0;
 }
 
