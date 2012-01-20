@@ -40,13 +40,13 @@ int prixPour(int i) {
     return 0;
 }
 
-#define REDUCTION(frequence, article, montant) if (index == article \
+#define REDUCTION(frequence, article, montant) if (changement == article \
     && etat[article] > 0 \
     && etat[article] % frequence == 0) { \
     return -montant; \
 }
 
-int reductionPour(int etat[], int index) {
+int reductionPour(int etat[], int changement) {
     REDUCTION(2, CERISES, 20);
     REDUCTION(2, BANANES, prixPour(BANANES));
     REDUCTION(3, APPLES, prixPour(APPLES));
@@ -54,11 +54,13 @@ int reductionPour(int etat[], int index) {
     return 0;
 }
 
-int reductionGlobalePour(int etat[], int index) {
+int reductionGlobalePour(int etat[], int changement) {
     int pommes = etat[POMMES] + etat[APPLES] + etat[MELE];
     int fruits = nombreFruits(etat);
 
-    if ((index == POMMES || index == APPLES || index == MELE) && pommes > 0 && pommes % 4 == 0) {
+    if ((changement == POMMES || changement == APPLES || changement == MELE)
+        && pommes > 0
+        && pommes % 4 == 0) {
         return -100;
     }
     if (fruits > 0 && fruits % 5 == 0) {
