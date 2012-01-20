@@ -40,17 +40,17 @@ int prixPour(int i) {
     return 0;
 }
 
-#define REDUCTION(article, frequence, montant) if (index == article \
+#define REDUCTION(frequence, article, montant) if (index == article \
     && etat[article] > 0 \
     && etat[article] % frequence == 0) { \
     return -montant; \
 }
 
 int reductionPour(int etat[], int index) {
-    REDUCTION(CERISES, 2, 20);
-    REDUCTION(BANANES, 2, 200);
-    REDUCTION(APPLES, 3, 100);
-    REDUCTION(MELE, 2, 50);
+    REDUCTION(2, CERISES, 20);
+    REDUCTION(2, BANANES, prixPour(BANANES));
+    REDUCTION(3, APPLES, prixPour(APPLES));
+    REDUCTION(2, MELE, prixPour(MELE) / 2);
     return 0;
 }
 
